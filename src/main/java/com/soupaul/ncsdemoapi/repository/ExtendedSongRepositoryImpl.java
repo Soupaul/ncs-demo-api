@@ -16,7 +16,7 @@ import com.mongodb.client.MongoDatabase;
 import com.soupaul.ncsdemoapi.models.Song;
 
 @Component
-public class SearchRepositoryImpl implements SearchRepository {
+public class ExtendedSongRepositoryImpl implements ExtendedSongRepository {
 
     @Autowired
     MongoClient client;

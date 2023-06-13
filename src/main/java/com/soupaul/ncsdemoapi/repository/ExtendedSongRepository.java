@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.soupaul.ncsdemoapi.models.Song;
 
-public interface SearchRepository {
+public interface ExtendedSongRepository {
 
     List<Song> findByText(String text);
 

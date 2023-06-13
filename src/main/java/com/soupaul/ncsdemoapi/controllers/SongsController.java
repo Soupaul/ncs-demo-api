@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.soupaul.ncsdemoapi.models.Song;
-import com.soupaul.ncsdemoapi.repository.SearchRepository;
+import com.soupaul.ncsdemoapi.repository.ExtendedSongRepository;
 import com.soupaul.ncsdemoapi.repository.SongRepository;
 
 @RestController
@@ -18,7 +18,7 @@ public class SongsController {
     private SongRepository songRepo;
 
     @Autowired
-    private SearchRepository searchRepo;
+    private ExtendedSongRepository extSongRepo;
 
     @GetMapping("/allSongs")
     public List<Song> getAllSongs() {
@@ -27,7 +27,7 @@ public class SongsController {
 
     @GetMapping("/songs/{text}")
     public List<Song> search(@PathVariable String text) {
-        return searchRepo.findByText(text);
+        return extSongRepo.findByText(text);
     }
 
 }
