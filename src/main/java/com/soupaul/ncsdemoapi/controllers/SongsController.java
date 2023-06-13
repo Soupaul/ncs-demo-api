@@ -30,4 +30,9 @@ public class SongsController {
         return extSongRepo.findByText(text);
     }
 
+    @GetMapping("/newReleases")
+    public List<Song> getNewReleases() {
+        return extSongRepo.newReleases();
+    }
+
 }

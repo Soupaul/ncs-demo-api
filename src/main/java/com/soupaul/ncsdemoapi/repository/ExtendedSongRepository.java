@@ -8,4 +8,5 @@ public interface ExtendedSongRepository {
 
     List<Song> findByText(String text);
 
+    List<Song> newReleases();
 }

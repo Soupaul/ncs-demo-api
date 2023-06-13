@@ -44,4 +44,21 @@ public class ExtendedSongRepositoryImpl implements ExtendedSongRepository {
 
     }
 
+    @Override
+    public List<Song> newReleases() {
+
+        final List<Song> songs = new ArrayList<>();
+
+        MongoDatabase database = client.getDatabase("ncs");
+        MongoCollection<Document> collection = database.getCollection("songs");
+        AggregateIterable<Document> result = collection.aggregate(Arrays.asList(new Document("$sort",
+                new Document("release_date", -1L)),
+                new Document("$limit", 20L)));
+
+        result.forEach(doc -> songs.add(converter.read(Song.class, doc)));
+
+        return songs;
+
+    }
+
 }
