@@ -1,0 +1,22 @@
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - db:/data/db
+  app:
+    depends_on:
+      - mongodb
+    build: .
+    container_name: ncs-demo-api
+    restart: on-failure
+    ports:
+      - 8080:8080
+    stdin_open: true
+    tty: true
+
+volumes:
+  db:

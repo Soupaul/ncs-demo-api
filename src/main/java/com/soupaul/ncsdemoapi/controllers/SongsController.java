@@ -35,4 +35,9 @@ public class SongsController {
         return extSongRepo.newReleases();
     }
 
+    @GetMapping("/echo/hello")
+    public String echoHelloWorld(){
+        return "Hello World";
+    }
+
 }
